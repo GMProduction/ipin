@@ -39,8 +39,8 @@
 {{--                <a class="nav-item
  nav-link text-sm ml-3" href="/">Private Tour</a>--}}
 {{--                <a class="nav-item nav-link text-sm ml-3" href="/">Paket Tour</a>--}}
-                <a class="nav-item nav-link text-sm ml-3" href="/">Gallery</a>
-                <a class="nav-item nav-link text-sm ml-3" href="/">Artikel</a>
+                <a class="nav-item nav-link text-sm ml-3" href="/gallery">Gallery</a>
+                <a class="nav-item nav-link text-sm ml-3" href="/artikel">Artikel</a>
                 <a class="nav-item nav-link text-sm ml-3" href="/kontak">Kontak Kami</a>
 
                 @auth()

@@ -26,6 +26,17 @@ Route::get('/detailpaket', function () {
     return view('detailpaket');
 });
 
+Route::get('/detailartikel', function () {
+    return view('detailartikel');
+});
+
+Route::get('/gallery', function () {
+    return view('gallery');
+});
+
+Route::get('/artikel', function () {
+    return view('artikel');
+});
 
 Route::get('/kontak', function () {
     return view('kontak');
