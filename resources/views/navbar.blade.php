@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Margo Tani</title>
+    <title>CV.Berkat Abadi Makmur  </title>
     <!-- Favicon -->
 {{--    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">--}}
 <!-- Fonts -->
@@ -27,7 +27,7 @@
 <!-- Main content -->
 <div class="main-content" id="panel">
     <nav class="navbar navbar-light navbar-expand-lg bg-white" style="height: 90px">
-        <a class="navbar-brand" href="#">Margo Tani</a>
+        <a class="navbar-brand" href="#">CV.Berkat Abadi Makmur  </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,8 +36,12 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" >
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link text-sm ml-3" href="/">Beranda</a>
+{{--                <a class="nav-item
+ nav-link text-sm ml-3" href="/">Private Tour</a>--}}
+{{--                <a class="nav-item nav-link text-sm ml-3" href="/">Paket Tour</a>--}}
+                <a class="nav-item nav-link text-sm ml-3" href="/">Gallery</a>
+                <a class="nav-item nav-link text-sm ml-3" href="/">Artikel</a>
                 <a class="nav-item nav-link text-sm ml-3" href="/kontak">Kontak Kami</a>
-                <a class="nav-item nav-link text-sm ml-3" style="font-weight: bold" href="/cart"><i data-feather="shopping-cart"></i></a>
 
                 @auth()
                 <a class="nav-item nav-link text-sm ml-7 btn btn-outline-success" style="font-weight: bold" href="/">Dashboard</a>
@@ -66,13 +70,17 @@
                 <div class="col-sm-12 col-md-9">
                     <h6>About</h6>
                     <p class="text-justify">
-                        MARGO TANI merupakan produsen/penangkar benih padi dengan jenis usaha perseorangan yang berdiri di Nganjuk Jawa Timur tahun 2006. Didirikan oleh Bapak Suharmadji selaku Pegawai Negeri Dinas Balai Benih Induk Propinsi Tingkat I di Desa Balonggebang Nganjuk dan Desa Tejo Jombang mulai tahun 1974-2009. Karena kecintaanya pada dunia pertanian, maka ditahun 2006 mendirikan produsen benih/pengedar benih bina.</p>
+                        CV.Berkat Abadi Makmur Tour terlengkap.</p>
                 </div>
 
                 <div class="col-xs-6 col-md-3">
                     <h6>Quick Links</h6>
                     <ul class="footer-links">
                         <li><a href="http://scanfcode.com/about/">Home</a></li>
+{{--                        <li><a href="http://scanfcode.com/about/">Private Tour</a></li>--}}
+{{--                        <li><a href="http://scanfcode.com/about/">Paket Tour</a></li>--}}
+                        <li><a href="http://scanfcode.com/about/">Gallery</a></li>
+                        <li><a href="http://scanfcode.com/about/">Artikel</a></li>
                         <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
                     </ul>
                 </div>

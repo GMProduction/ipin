@@ -18,9 +18,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('/detail', function () {
-    return view('detail');
+Route::get('/detailprivate', function () {
+    return view('detailprivate');
 });
+
+Route::get('/detailpaket', function () {
+    return view('detailpaket');
+});
+
 
 Route::get('/kontak', function () {
     return view('kontak');

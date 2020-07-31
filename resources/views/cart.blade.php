@@ -22,9 +22,10 @@
                     <tr>
                         <th scope="col" class="sort text-center" data-sort="name">#</th>
                         <th scope="col" class="sort text-center" data-sort="completion">gambar</th>
-                        <th scope="col" class="sort text-center" data-sort="budget">Nama Produk</th>
-                        <th scope="col" class="sort text-center" data-sort="budget">Qty</th>
-                        <th scope="col" class="sort text-center" data-sort="completion">Harga</th>
+                        <th scope="col" class="sort text-center" data-sort="budget">Nama Tour</th>
+                        <th scope="col" class="sort text-center" data-sort="budget">Jenis Tour</th>
+                        <th scope="col" class="sort text-center" data-sort="budget">Quota</th>
+                        <th scope="col" class="sort text-center" data-sort="completion">Harga /orang</th>
                         <th scope="col" class="sort text-center" data-sort="completion">Total</th>
                     </tr>
                     </thead>
@@ -34,10 +35,11 @@
                         <td class="text-center">1</td>
                         <td class="text-center"><img src="{{asset('assets/img/slider/slider1.jpg')}}"
                                                      style="height: 100px; width: 100px; object-fit: cover"></td>
-                        <td class="text-center">Jesrey Persis Solo</td>
-                        <td class="text-center"> 3</td>
+                        <td class="text-center">Pantai Pasir Merah Muda</td>
+                        <th scope="col" class="sort text-center" data-sort="budget">Private Tour / paket Tour</th>
+                        <td class="text-center"> 4 orang</td>
                         <td class="text-center"> Rp 100.000</td>
-                        <td class="text-center"> Rp 300.000</td>
+                        <td class="text-center"> Rp 400.000</td>
 
                     </tr>
                     {{--                    @endforeach--}}
@@ -48,7 +50,7 @@
 
             <div class="col-12">
                 <div class="text-left mt-5">
-                    <h2><i class="mr-3" data-feather="twitch"></i>Total Harga & Pengiriman</h2>
+                    <h2><i class="mr-3" data-feather="twitch"></i>Total Harga</h2>
                     <div class="d-block bg-gradient-success mb-2" style="height: 3px; width: 300px; margin-top: 20px">
                     </div>
                 </div>
