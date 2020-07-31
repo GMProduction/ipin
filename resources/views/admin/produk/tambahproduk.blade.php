@@ -11,16 +11,16 @@
         </script>
     @endif
     <!-- Header -->
-    <div class="header bg-translucent-success pb-6">
+    <div class="header bg-gradient-teal pb-6">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Tambah Data Produk</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Tambah Data Tour</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="/admin/produk">Data Produk</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/produk">Data Tour</a></li>
                                 <li class="breadcrumb-item"><a href="#">Tambah Data</a></li>
                             </ol>
                         </nav>
@@ -46,33 +46,67 @@
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="nama">Nama Produk</label>
-                                            <input type="text" required id="nama" name="nama"
+                                            <label for="tour">Nama Paket Tour</label>
+                                            <input type="text" required id="tour" name="tour"
                                                    class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-lg-4">
-                                        <label for="kategori">Kategori</label>
-                                        <select class="form-control" id="kategori" name="kategori">
-                                            <option value="kursi">Kursi</option>
-                                            <option value="meja">Meja</option>
+                                        <label for="kota">Kota Tujuan</label>
+                                        <select class="form-control" id="kota" name="kota">
+                                            <option value="solo">Solo</option>
+                                            <option value="jogja">Jogja</option>
+                                            <option value="bandung">Bandung</option>
+                                            <option value="surabaya">Surabaya</option>
+                                            <option value="bali">Bali</option>
                                         </select>
                                     </div>
 
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="wisata">Tempat Wisata</label>
+                                            <input type="text" required id="wisata" name="wisata"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="harga">Harga</label>
+                                            <label for="minquota">Min. Quota</label>
+                                            <input type="number" required id="minquota" name="minquota"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="maxquota">Max. Quota</label>
+                                            <input type="number" required id="maxquota" name="maxquota"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="harga">Harga /Orang</label>
                                             <input type="number" required id="harga" name="harga"
                                                    class="form-control">
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-2">
                                         <div class="form-group">
-                                            <label for="deskripsi">Deskripsi</label>
-                                            <input type="text" required id="deskripsi" name="deskripsi"
+                                            <label for="waktu">Waktu /hari</label>
+                                            <input type="number" required id="waktu" name="waktu"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-10">
+                                        <div class="form-group">
+                                            <label for="fasilitas">Fasilitas</label>
+                                            <input type="text" required id="fasilitas" name="fasilitas"
                                                    class="form-control">
                                         </div>
                                     </div>

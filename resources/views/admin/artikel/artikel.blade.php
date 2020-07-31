@@ -12,21 +12,21 @@
         </script>
     @endif
     <!-- Header -->
-    <div class="header bg-translucent-success pb-6">
+    <div class="header bg-gradient-teal pb-6">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Data Kategori</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Data Artikel</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#">Data Kategori</a></li>
+                                <li class="breadcrumb-item"><a href="#">Data Artikel</a></li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="/admin/tambahkategori" class="btn btn-md btn-neutral">Tambah Data</a>
+                        <a href="/admin/tambahartikel" class="btn btn-md btn-neutral">Tambah Data</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header border-0">
-                        <h3 class="mb-0">Tabel Kategori</h3>
+                        <h3 class="mb-0">Tabel Artikel</h3>
                     </div>
                     <!-- Light table -->
                     <div class="table-responsive">
@@ -47,18 +47,22 @@
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort text-center" data-sort="name">#</th>
-                                <th scope="col" class="sort text-center" data-sort="budget">Nama Kategori</th>
+                                <th scope="col" class="sort text-center" data-sort="budget">Judul</th>
+                                <th scope="col" class="sort text-center" data-sort="budget">Isi</th>
+                                <th scope="col" class="sort text-center" data-sort="budget">Foto</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Action</th>
                             </tr>
                             </thead>
                             <tbody class="list">
-{{--                            @foreach($kategori as $p)--}}
+{{--                            @foreach($artikel as $p)--}}
                                 <tr>
                                     <td class="text-center">1</td>
-                                    <td class="text-center">Meja / Kursi</td>
+                                    <td class="text-center">Keraton Solo</td>
+                                    <td class="text-center">Keraton solo adalah tempat wisata di solo yang ..............</td>
+                                    <td class="text-center"><img src="{{asset('assets/img/theme/angular.jpg')}}" style="height: 50px"></td>
                                     <td class="text-right">
                                         <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
+                                            <a class="btn btn-sm btn-icon-only btn-primary text-light" href="#" role="button"
                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
@@ -90,7 +94,7 @@
 
         function hapus(id, name) {
             Swal.fire({
-                title: 'Apa anda yakin untuk menghapus kategori ?',
+                title: 'Apa anda yakin untuk menghapus artikel ?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -102,7 +106,7 @@
                     let data = {
                         '_token' : '{{csrf_token()}}'
                     };
-                    let get = await $.post('/admin/kategori/hapus/'+id,data);
+                    let get = await $.post('/admin/artikel/hapus/'+id,data);
                     window.location.reload();
                 }
             })

@@ -31,7 +31,7 @@
         <!-- Brand -->
         <div class="sidenav-header" style="margin-top: 20px; margin-left: 24px; height: 40px; text-align: start">
             {{--            <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">--}}
-            <a class="text-success">Margo Tani Furniture</a>
+            <a class="text-success text-teal">CV. Berkat Abadi Makmur</a>
         </div>
 
         <div class="navbar-inner">
@@ -47,16 +47,23 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/kategori">
-                            <i class="ni ni-ui-04"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Kategori</span>
+                        <a class="nav-link active" href="/admin/produk">
+                            <i class="ni ni-box-2"></i>
+                            <span class="nav-link-text" style="margin-left: 10px">Paket Tour</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/produk">
-                            <i class="ni ni-box-2"></i>
-                            <span class="nav-link-text" style="margin-left: 10px">Produk</span>
+                        <a class="nav-link active" href="/admin/gallery">
+                            <i class="ni ni-album-2"></i>
+                            <span class="nav-link-text" style="margin-left: 10px">Gallery</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/artikel">
+                            <i class="ni ni-book-bookmark"></i>
+                            <span class="nav-link-text" style="margin-left: 10px">Artikel</span>
                         </a>
                     </li>
 
@@ -94,7 +101,7 @@
 </nav>
 <!-- Main content -->
 <div class="main-content" id="panel">
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-translucent-success border-bottom">
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-gradient-teal border-bottom">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Search form -->
@@ -163,7 +170,7 @@
             <div class="col-lg-6">
                 <div class="copyright text-center  text-lg-left  text-muted">
                     &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                                   target="_blank">Rofiq</a>
+                                   target="_blank">Febri</a>
                 </div>
             </div>
 

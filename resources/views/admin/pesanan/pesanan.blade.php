@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- Header -->
-    <div class="header bg-translucent-success pb-6">
+    <div class="header bg-gradient-teal pb-6">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
@@ -44,6 +44,7 @@
                                 <th scope="col" class="sort text-center" data-sort="budget">Tanggal</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Nama Pemesan</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Pembayaran</th>
+                                <th scope="col" class="sort text-center" data-sort="completion">Quota</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Status</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Total Harga</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Action</th>
