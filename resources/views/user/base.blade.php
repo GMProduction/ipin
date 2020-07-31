@@ -30,7 +30,7 @@
         <!-- Brand -->
         <div class="sidenav-header" style="margin-top: 20px; margin-left: 24px; height: 40px; text-align: start">
 {{--            <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">--}}
-            <a class="text-success">Margo Tani Furniture</a>
+            <a class="text-success">CV. Berkat Abadi Makmur</a>
         </div>
         <div class="navbar-inner">
             <!-- Collapse -->
@@ -82,7 +82,7 @@
 </nav>
 <!-- Main content -->
 <div class="main-content" id="panel">
-    <nav class="navbar navbar-top navbar-expand navbar-suc bg-gradient-success border-bottom">
+    <nav class="navbar navbar-top navbar-expand navbar-suc bg-gradient-teal border-bottom">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Search form -->

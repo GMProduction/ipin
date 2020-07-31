@@ -24,6 +24,7 @@
                         <th scope="col" class="sort text-center" data-sort="completion">gambar</th>
                         <th scope="col" class="sort text-center" data-sort="budget">Nama Tour</th>
                         <th scope="col" class="sort text-center" data-sort="budget">Jenis Tour</th>
+                        <th scope="col" class="sort text-center" data-sort="budget">Tanggal</th>
                         <th scope="col" class="sort text-center" data-sort="budget">Quota</th>
                         <th scope="col" class="sort text-center" data-sort="completion">Harga /orang</th>
                         <th scope="col" class="sort text-center" data-sort="completion">Total</th>
@@ -37,6 +38,7 @@
                                                      style="height: 100px; width: 100px; object-fit: cover"></td>
                         <td class="text-center">Pantai Pasir Merah Muda</td>
                         <th scope="col" class="sort text-center" data-sort="budget">Private Tour / paket Tour</th>
+                        <th scope="col" class="sort text-center" data-sort="budget">17 Agustus 2020</th>
                         <td class="text-center"> 4 orang</td>
                         <td class="text-center"> Rp 100.000</td>
                         <td class="text-center"> Rp 400.000</td>

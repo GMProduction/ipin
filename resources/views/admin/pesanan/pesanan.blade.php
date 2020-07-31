@@ -58,8 +58,9 @@
                                 <td class="text-center">14 Juli 2020</td>
                                 <td class="text-center">Topik Muhajir</td>
                                 <td class="text-center">belum/sudah</td>
+                                <td class="text-center">4 Orang</td>
                                 <td class="text-center">menunggu/proses/selesai/tolak</td>
-                                <td class="text-center">Rp 39.000</td>
+                                <td class="text-center">Rp 400.000</td>
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-success" href="/admin/detailpesanan">

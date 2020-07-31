@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- Header -->
-    <div class="header bg-gradient-success pb-6">
+    <div class="header bg-gradient-teal pb-6">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
@@ -43,6 +43,7 @@
                                 <th scope="col" class="sort text-center" data-sort="budget">No. Pesanan</th>
                                 <th scope="col" class="sort text-center" data-sort="budget">Tanggal</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Pembayaran</th>
+                                <th scope="col" class="sort text-center" data-sort="completion">Quota</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Status</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Total Harga</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Action</th>
@@ -55,8 +56,9 @@
                                 <td class="text-center">psn0001</td>
                                 <td class="text-center">14 Juli 2020</td>
                                 <td class="text-center">belum/sudah</td>
+                                <td class="text-center">4 Orang</td>
                                 <td class="text-center">menunggu/proses/selesai/tolak</td>
-                                <td class="text-center">Rp 39.000</td>
+                                <td class="text-center">Rp 400.000</td>
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-success" href="/user/detailpesanan">

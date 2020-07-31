@@ -16,6 +16,8 @@
                 <p style="font-size: 14px; font-weight: bold" class="text-black-50" >Fasilitas: Minibus, Makan 6x (1 hari 3x), Free Tour Guide </p>
                 <a style="font-size: 20px; font-weight: bold" class="text-success">Rp. 100.000 /Orang</a>
 
+
+
                 <div style="display: flex; align-items: center" class="mb-4 mt-3">
                     <i class="ni ni-single-02" style="font-size: 30px; margin-right: 20px"></i>
                     <a href="#" class="btn btn-white mr-0 quantity__minus text-dark" ><span>-</span></a>
@@ -23,6 +25,12 @@
                     <a class="btn btn-success quantity__plus"><span class="text-white">+</span></a>
 
                 </div>
+
+                <div class="form-group">
+                    <label for="tanggal" class="form-control-label">Tentukan Tanggal</label>
+                    <input class="form-control" type="date" value="2020-08-01" id="tanggal" name="tanggal">
+                </div>
+
 
                 <button type="button" class="btn btn-primary mt-0" >Pesan Sekarang</button>
 

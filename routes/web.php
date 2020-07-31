@@ -55,8 +55,20 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/admin/produk', function () {
-    return view('admin.produk.produk');
+Route::get('/admin/privat', function () {
+    return view('admin.privat.privat');
+});
+
+Route::get('/admin/tambahprivat', function () {
+    return view('admin.privat.tambahprivat');
+});
+
+Route::get('/admin/paket', function () {
+    return view('admin.paket.paket');
+});
+
+Route::get('/admin/tambahpaket', function () {
+    return view('admin.paket.tambahpaket');
 });
 
 Route::get('/admin/gallery', function () {
@@ -76,9 +88,7 @@ Route::get('/admin/tambahartikel', function () {
 });
 
 
-Route::get('/admin/tambahproduk', function () {
-    return view('admin.produk.tambahproduk');
-});
+
 
 Route::get('/admin/pesanan', function () {
     return view('admin.pesanan.pesanan');

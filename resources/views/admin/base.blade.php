@@ -47,9 +47,16 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/produk">
+                        <a class="nav-link active" href="/admin/paket">
                             <i class="ni ni-box-2"></i>
                             <span class="nav-link-text" style="margin-left: 10px">Paket Tour</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/privat">
+                            <i class="ni ni-bus-front-12"></i>
+                            <span class="nav-link-text" style="margin-left: 10px">Private Tour</span>
                         </a>
                     </li>
 

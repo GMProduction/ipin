@@ -26,7 +26,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="/admin/tambahproduk" class="btn btn-md btn-neutral">Tambah Data</a>
+                        <a href="/admin/tambahpaket" class="btn btn-md btn-neutral">Tambah Data</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                                 <th scope="col" class="sort text-center" data-sort="budget">Nama Paket Tour</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Kota Tujuan</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Nama Tempat Wisata</th>
-                                <th scope="col" class="sort text-center" data-sort="completion">Min Quota</th>
+                                <th scope="col" class="sort text-center" data-sort="completion">Jadwal</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Max Quota</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Harga /orang</th>
                                 <th scope="col" class="sort text-center" data-sort="completion">Waktu /hari</th>
@@ -66,7 +66,7 @@
                                 <td class="text-center">Paket Keraton Solo</td>
                                 <td class="text-center">Solo</td>
                                 <td class="text-center">Keraton Solo</td>
-                                <td class="text-center">4 Orang</td>
+                                <td class="text-center">17 Agustus 2020</td>
                                 <td class="text-center">8 Orang</td>
                                 <td class="text-center">Rp 100.000 / orang</td>
                                 <td class="text-center">1 hari</td>

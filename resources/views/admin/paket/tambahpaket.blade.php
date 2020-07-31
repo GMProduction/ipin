@@ -73,9 +73,8 @@
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="minquota">Min. Quota</label>
-                                            <input type="number" required id="minquota" name="minquota"
-                                                   class="form-control">
+                                            <label for="jadwal" class="form-control-label">Jadwal</label>
+                                            <input class="form-control" type="date" value="2018-11-23" id="jadwal" name="jadwal">
                                         </div>
                                     </div>
 

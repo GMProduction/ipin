@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- Header -->
-    <div class="header bg-translucent-success pb-6">
+    <div class="header bg-gradient-teal pb-6">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
