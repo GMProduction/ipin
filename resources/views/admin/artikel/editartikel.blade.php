@@ -4,7 +4,7 @@
         <script>
             Swal.fire({
                 title: 'Success',
-                text: 'Berhasil Menyimpan Data',
+                text: 'Berhasil Merubah Data',
                 icon: 'success',
                 confirmButtonText: 'Ok'
             })
@@ -16,12 +16,12 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Tambah Data Gallery</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Edit Data Artikel</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="/admin/gallery">Data Gallery</a></li>
-                                <li class="breadcrumb-item"><a href="#">Tambah Data</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/artikel">Data Artikel</a></li>
+                                <li class="breadcrumb-item"><a href="#">Edit Data</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -40,24 +40,34 @@
                     <div class="card-body">
                         <form method="POST" enctype="multipart/form-data">
                             @csrf
+                            <input id="id" name="id" value="{{$artikel->id}}" hidden>
                             <h6 class="heading-small text-muted mb-4">Data</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label  for="wisata">Tempat Wisata</label>
-                                            <input type="text" required id="wisata" name="nama"
+                                            <label  for="judul">Judul</label>
+                                            <input type="text" required id="judul" name="judul" value="{{$artikel->judul}}"
                                                    class="form-control">
                                         </div>
                                     </div>
 
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="isi">Isi</label>
+                                            <textarea class="form-control" id="isi" name="isi" rows="3">{{$artikel->isi}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mb-3">
+                                        <img src="{{asset('uploads/artikel')}}/{{$artikel->url}}" height="200">
+                                    </div>
                                     <div class="col-lg-6">
                                         <a>Gambar</a>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="foto"
+                                            <input type="file" class="custom-file-input" id="gambar"
                                                    name="gambar" lang="en">
-                                            <label class="custom-file-label" for="foto">Select file</label>
+                                            <label class="custom-file-label" for="gambar">Select file</label>
                                         </div>
                                     </div>
 

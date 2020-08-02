@@ -4,7 +4,7 @@
         <script>
             Swal.fire({
                 title: 'Success',
-                text: 'Berhasil Menyimpan Data',
+                text: 'Berhasil Merubah Data',
                 icon: 'success',
                 confirmButtonText: 'Ok'
             })
@@ -16,12 +16,12 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Tambah Data Tour</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Edit Data Tour</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="/admin/privat">Data Tour</a></li>
-                                <li class="breadcrumb-item"><a href="#">Tambah Data</a></li>
+                                <li class="breadcrumb-item"><a href="#">Edit Data</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -38,8 +38,9 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <form method="POST" action="/admin/produk/adddata" enctype="multipart/form-data">
+                        <form method="POST" action="" enctype="multipart/form-data">
                             @csrf
+                            <input id="id" name="id" value="{{$produk->id}}" hidden>
                             <input id="tipe" name="tipe" value="private" hidden>
                             <h6 class="heading-small text-muted mb-4">Data</h6>
                             <div class="pl-lg-4">
@@ -49,7 +50,7 @@
                                         <div class="form-group">
                                             <label for="tour">Nama Private Tour</label>
                                             <input type="text" required id="tour" name="nama"
-                                                   class="form-control">
+                                                   class="form-control" value="{{$produk->nama}}">
                                         </div>
                                     </div>
 
@@ -68,7 +69,7 @@
                                         <div class="form-group">
                                             <label for="wisata">Tempat Wisata</label>
                                             <input type="text" required id="wisata" name="wisata"
-                                                   class="form-control">
+                                                   class="form-control" value="{{$produk->wisata}}">
                                         </div>
                                     </div>
 
@@ -76,7 +77,7 @@
                                         <div class="form-group">
                                             <label for="minquota">Min. Quota</label>
                                             <input type="number" required id="minquota" name="minquota"
-                                                   class="form-control">
+                                                   class="form-control" value="{{$produk->min_kuota}}">
                                         </div>
                                     </div>
 
@@ -84,7 +85,7 @@
                                         <div class="form-group">
                                             <label for="maxquota">Max. Quota</label>
                                             <input type="number" required id="maxquota" name="maxquota"
-                                                   class="form-control">
+                                                   class="form-control" value="{{$produk->max_kuota}}">
                                         </div>
                                     </div>
 
@@ -92,7 +93,7 @@
                                         <div class="form-group">
                                             <label for="harga">Harga /Orang</label>
                                             <input type="number" required id="harga" name="harga"
-                                                   class="form-control">
+                                                   class="form-control" value="{{$produk->harga}}">
                                         </div>
                                     </div>
 
@@ -100,7 +101,7 @@
                                         <div class="form-group">
                                             <label for="waktu">Waktu /hari</label>
                                             <input type="number" required id="waktu" name="durasi"
-                                                   class="form-control">
+                                                   class="form-control" value="{{$produk->durasi}}">
                                         </div>
                                     </div>
 
@@ -108,10 +109,12 @@
                                         <div class="form-group">
                                             <label for="fasilitas">Fasilitas</label>
                                             <input type="text" required id="fasilitas" name="fasilitas"
-                                                   class="form-control">
+                                                   class="form-control" value="{{$produk->deskripsi}}">
                                         </div>
                                     </div>
-
+                                    <div class="col-lg-12 mb-3">
+                                        <img src="{{asset('uploads/image')}}/{{$produk->url}}" height="200">
+                                    </div>
                                     <div class="col-lg-6">
                                         <a>Gambar</a>
                                         <div class="custom-file">

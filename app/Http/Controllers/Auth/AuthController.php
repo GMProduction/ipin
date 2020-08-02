@@ -64,26 +64,25 @@ class AuthController extends CustomController
     {
         if ($this->postField('password') !== $this->postField('password_confirmation')) {
             return redirect()->back()->with(['fail' => 'Password Not Match']);
-            dd('fail');
         }
+
         $roles = $this->postField('roles');
         $data  = [
             'username' => $this->postField('username'),
             'email'    => $this->postField('email'),
             'password' => Hash::make($this->postField('password')),
             'roles'    => $roles,
+            'nama' =>  $this->postField('nama'),
+            'phone' =>  $this->postField('phone'),
+            'alamat' =>  $this->postField('alamat'),
         ];
 
-        if ($roles == 'mitra') {
-            $data     = Arr::add($data, 'nama', $this->postField('nama'));
-            $data     = Arr::add($data, 'phone', $this->postField('phone'));
-            $data     = Arr::add($data, 'alamat', $this->postField('alamat'));
-            $redirect = '/mitra';
+        if ($roles === 'admin') {
+            $redirect = '/admin';
         } else {
-            $redirect = '/user';
+            $redirect = '/';
         }
         $user = $this->insert(User::class, $data);
-
         Auth::loginUsingId($user->id);
 
         return redirect($redirect);

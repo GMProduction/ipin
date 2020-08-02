@@ -26,7 +26,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="/admin/tambahgallery" class="btn btn-md btn-neutral">Tambah Data</a>
+                        <a href="/admin/gallery/tambahgallery" class="btn btn-md btn-neutral">Tambah Data</a>
                     </div>
                 </div>
             </div>
@@ -53,11 +53,11 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-{{--                            @foreach($gallery as $p)--}}
+                            @foreach($gallery as $p)
                                 <tr>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">Keraton Solo</td>
-                                    <td class="text-center"><img src="{{asset('assets/img/theme/angular.jpg')}}" style="height: 50px"></td>
+                                    <td class="text-center">{{$loop->index+1}}</td>
+                                    <td class="text-center">{{$p->nama}}</td>
+                                    <td class="text-center"><img src="{{asset('/uploads/gallery')}}/{{$p->url}}" height="50"></td>
                                     <td class="text-right">
                                         <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only btn-primary text-light" href="#" role="button"
@@ -65,13 +65,13 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="">Edit</a>
-                                                <a class="dropdown-item" href="#!">Delete</a>
+                                                <a class="dropdown-item" href="/admin/gallery/editgallery/{{$p->id}}">Edit</a>
+                                                <a class="dropdown-item" href="#!" onclick="hapus('{{$p->id}}','{{$p->nama}}')">Delete</a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-{{--                            @endforeach--}}
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -92,7 +92,7 @@
 
         function hapus(id, name) {
             Swal.fire({
-                title: 'Apa anda yakin untuk menghapus gallery ?',
+                title: 'Apa anda yakin untuk menghapus gallery '+name+' ?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

@@ -26,7 +26,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="/admin/tambahartikel" class="btn btn-md btn-neutral">Tambah Data</a>
+                        <a href="/admin/artikel/tambahartikel" class="btn btn-md btn-neutral">Tambah Data</a>
                     </div>
                 </div>
             </div>
@@ -54,26 +54,26 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-{{--                            @foreach($artikel as $p)--}}
+                            @foreach($artikel as $p)
                                 <tr>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">Keraton Solo</td>
-                                    <td class="text-center">Keraton solo adalah tempat wisata di solo yang ..............</td>
-                                    <td class="text-center"><img src="{{asset('assets/img/theme/angular.jpg')}}" style="height: 50px"></td>
-                                    <td class="text-right">
+                                    <td class="text-center">{{$loop->index+1}}</td>
+                                    <td class="text-center">{{$p->judul}}</td>
+                                    <td class="text-center">{{$p->isi}}</td>
+                                    <td class="text-center"><img src="{{asset('/uploads/artikel')}}/{{$p->url}}" height="50"></td>
+                                    <td class="text-center">
                                         <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only btn-primary text-light" href="#" role="button"
                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="">Edit</a>
-                                                <a class="dropdown-item" href="#!">Delete</a>
+                                                <a class="dropdown-item" href="/admin/artikel/editartikel/{{$p->id}}">Edit</a>
+                                                <a class="dropdown-item" href="#!" onclick="hapus('{{$p->id}}','{{$p->judul}}')">Delete</a>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-{{--                            @endforeach--}}
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -94,7 +94,7 @@
 
         function hapus(id, name) {
             Swal.fire({
-                title: 'Apa anda yakin untuk menghapus artikel ?',
+                title: 'Apa anda yakin untuk menghapus artikel '+name+' ?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
