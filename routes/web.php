@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Main\MainController@index');
 
 
-Route::get('/detailprivate', function () {
-    return view('detailprivate');
-});
+Route::get('/private/{id}', 'Main\MainController@detailPrivate');
+Route::get('/open/{id}', 'Main\MainController@detailOpen');
 
 Route::get('/detailpaket', function () {
     return view('detailpaket');

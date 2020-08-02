@@ -33,12 +33,19 @@ class MainController extends CustomController
         return view('home')->with(['open' => $open, 'private' => $private]);
     }
 
-    public function detail($id)
+    public function detailPrivate($id)
     {
-        $product = Products::findOrFail($id);
-        $products = Products::all();
+        $product = Products::where('tipe', '=', 'private')->where('id', '=', $id)->firstOrFail();
+        $products = Products::where('tipe', '=', 'private')->get();
         $products->take(4);
-        return view('detail')->with(['product' => $product, 'products' => $products->take(4)]);
+        return view('detailprivate')->with(['product' => $product, 'products' => $products->take(4)]);
+    }
+    public function detailOpen($id)
+    {
+        $product = Products::where('tipe', '=', 'open')->where('id', '=', $id)->firstOrFail();
+        $products = Products::where('tipe', '=', 'open')->get();
+        $products->take(4);
+        return view('detailpaket')->with(['product' => $product, 'products' => $products->take(4)]);
     }
 
     public function dashboard()

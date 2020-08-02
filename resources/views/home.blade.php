@@ -53,7 +53,7 @@
                                 Rp. {{ number_format($v->harga, 0, ',', '.') }} /Orang</h4>
                             <p class="card-text text-sm text-black-50"
                                style="height: 50px; overflow: hidden">{{ $v->deskripsi }}</p>
-                            <a href="/product/{{ $v->id }}" class="btn btn-success">Detail</a>
+                            <a href="/private/{{ $v->id }}" class="btn btn-success">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                                 Rp. {{ number_format($v->harga, 0, ',', '.') }} /Orang</h4>
                             <p class="card-text text-sm text-black-50"
                                style="height: 50px; overflow: hidden">{{ $v->deskripsi }}</p>
-                            <a href="/product/{{ $v->id }}" class="btn btn-success">Detail</a>
+                            <a href="/open/{{ $v->id }}" class="btn btn-success">Detail</a>
                         </div>
                     </div>
                 </div>
