@@ -5,16 +5,19 @@
     <section class="container mt-5 mb-5 card p-3">
         <div class="row ">
             <div class="col-7">
-                <img src="{{asset('assets/img/slider/slider1.jpg')}}" style="width: 100%; height: 300px; object-fit: cover">
+                <img src="{{asset('/uploads/image')}} / {{ $product->url }}" style="width: 100%; height: 300px; object-fit: cover">
             </div>
 
             <div class="col-5">
-                <p style="font-size: 30px; font-weight: bold" class="mb-3 text-success">Pantai Pasir Merah Muda</p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Tanggal: 17 Agustus 2020 </p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0">Sisa Quota: 8 Orang </p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Waktu: 2 Hari </p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50" >Fasilitas: Bus AC, Makan 6x (1 hari 3x), Free Tour Guide </p>
-                <a style="font-size: 20px; font-weight: bold" class="text-success">Rp. 100.000 /Orang</a>
+                <p style="font-size: 30px; font-weight: bold" class="mb-3 text-success">{{ $product->nama }}</p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Tanggal: {{ $product->tgl_berangkat }} </p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0">Min
+                    Quota: {{ $product->min_kuota }} Orang </p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0">Max
+                    Quota: {{ $product->max_kuota }} Orang </p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Waktu: {{ $product->durasi }} Hari </p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50" >{{ $product->deskripsi }} </p>
+                <a style="font-size: 20px; font-weight: bold" class="text-success">Rp. {{ number_format($product->harga, 0, ',', '.') }} /Orang</a>
 
                 <div style="display: flex; align-items: center" class="mb-4 mt-3">
                     <i class="ni ni-single-02" style="font-size: 30px; margin-right: 20px"></i>
@@ -24,7 +27,7 @@
 
                 </div>
 
-                <button type="button" class="btn btn-primary mt-0" >Pesan Sekarang</button>
+                <button type="button" onclick="addToCart()"  class="btn btn-primary mt-0" >Pesan Sekarang</button>
 
             </div>
         </div>
@@ -40,19 +43,20 @@
         </div>
 
         <div class="row">
-            <div class="col-3">
-                <div class="card" style="height: 350px">
-                    <img class="card-img-top" src="{{asset('assets/img/slider/slider1.jpg')}}" alt="Card image cap"
-                         style="height: 150px; object-fit: cover; width: 100%">
-                    <div class="card-body">
-                        <h5 class="card-title mb-0">Tour Kemerdekaan</h5>
-                        <h4 class="card-title text-primary mt-0 mb-1 text-success">Rp. 50.000 /Orang</h4>
-                        <p class="card-text text-sm text-black-50 mb-0 ">Tanggal: 17 Agustus 2020</p>
-                        <p class="card-text text-sm text-black-50 mt-0" style=" overflow: hidden">Sisa Quota: 5 kursi</p>
-                        <a href="/product/" class="btn btn-success">Detail</a>
+            @foreach($products as $v)
+                <div class="col-3">
+                    <div class="card" style="height: 350px">
+                        <img class="card-img-top" src="{{asset('/uploads/image')}}/{{$v->url}}" alt="Card image cap"
+                             style="height: 150px; object-fit: cover; width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">{{ $v->nama }}</h5>
+                            <h4 class="card-title text-primary mt-0 mb-1 text-success">Rp. {{ number_format($v->harga, 0, ',', '.') }} /Orang</h4>
+                            <p class="card-text text-sm text-black-50" style="height: 50px; overflow: hidden">{{ $v->deskripsi }}</p>
+                            <a href="/open/{{ $v->id }}" class="btn btn-success">Detail</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
 
         </div>
@@ -62,6 +66,29 @@
 @section('script')
 
     <script>
+        async function addToCart() {
+            let data = {
+                '_token': "{{ csrf_token() }}",
+                id: '{{ $product->id }}',
+                harga: '{{ $product->harga}}',
+                qty: $('#qty').val(),
+                tgl: $('#tanggal').val(),
+                tipe: 'open',
+            };
+            try {
+                let res = await $.post('/ajax/addToCart', data);
+                if (res['status'] === 202) {
+                    alert(res['payload']);
+                }
+                // if(redirect){
+                //     window.location.href = '/cart'
+                // }
+                // alert('Pesanan Berhasil Masuk Ke Keranjang')
+            } catch (e) {
+                alert('Terjadi Kesalahan\nPesanan Gagal Masuk Ke Keranjang\n' + e.message);
+            }
+        }
+
         $(document).ready(function() {
             const minus = $('.quantity__minus');
             const plus = $('.quantity__plus');
