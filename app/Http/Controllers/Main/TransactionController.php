@@ -10,6 +10,7 @@ use App\Models\Produk;
 use App\Models\Transaction;
 use App\Models\Vendor;
 use DateTime;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -42,16 +43,33 @@ class TransactionController extends CustomController
     {
 
         try {
+            $idproduct = $this->postField('id');
             $product = Products::findOrFail($this->postField('id'));
+            $tgl = $product->tgl_berangkat;
+
             $min = $product->min_kuota;
             $max = $product->max_kuota;
             $kuota = $this->postField('qty');
-            if ($kuota < $min) {
-                return $this->jsonResponse('Kuota Minimal Kurang!', 202);
+
+            if ($this->postField('tipe') === 'private') {
+                $tgl = $this->postField('tgl');
+                if ($kuota < $min) {
+                    return $this->jsonResponse('Kuota Minimal Kurang!', 202);
+                }
+                if ($kuota > $max) {
+                    return $this->jsonResponse('Kuota Melebihi Maksimal!', 202);
+                }
+            }else{
+                $trans = Transaction::with('product')->whereHas('product', function (Builder $query) use ($idproduct){
+                    $query->where('id', '=', $idproduct);
+                })->where('tgl_berangkat', '=', $tgl)->get();
+                $kuotaTersedia = $trans->sum('kuota');
+                $kuotaSisa = $product->max_kuota - $kuotaTersedia;
+                if ($kuota > $kuotaSisa) {
+                    return $this->jsonResponse('Kuota Melebihi Maksimal!', 202);
+                }
             }
-            if ($kuota > $max) {
-                return $this->jsonResponse('Kuota Melebihi Maksimal!', 202);
-            }
+
             $data = [
                 'user_id' => auth()->id(),
                 'status' => '0',
@@ -60,10 +78,6 @@ class TransactionController extends CustomController
                 'kuota' => $kuota,
                 'product_id' => $this->postField('id')
             ];
-            $tgl = $product->tgl_berangkat;
-            if ($this->postField('tipe') === 'private'){
-                $tgl = $this->postField('tgl');
-            }
 
             $data = Arr::add($data, 'tgl_berangkat', $tgl);
             $transaction = $this->insert(Transaction::class, $data);
@@ -80,7 +94,7 @@ class TransactionController extends CustomController
     public function pagePayment($id)
     {
         $vendors = Vendor::all();
-        $transaction = Transaction::with('produk')->where('id', '=', $id)->where('user_id', '=', auth()->id())->firstOrFail();
+        $transaction = Transaction::with('product')->where('id', '=', $id)->where('user_id', '=', auth()->id())->firstOrFail();
         return view('payment')->with(['transaction' => $transaction, 'vendors' => $vendors]);
     }
 
@@ -102,5 +116,18 @@ class TransactionController extends CustomController
         $this->uploadImage('gambar', $image, 'bukti');
         $this->insert(Payment::class, $data);
         return redirect('/');
+    }
+
+    public function pageTransaksi()
+    {
+        $transaction = Transaction::with(['product', 'payment'])->where('user_id', '=', auth()->id())->get();
+        return view('user.pesanan.pesanan')->with(['transaction' => $transaction]);
+    }
+
+    public function detailHistory($id)
+    {
+        $trans = Transaction::with('product')->where('id', '=', $id)->firstOrFail();
+//        return $trans->toArray();
+        return view('user.pesanan.detailPesanan')->with(['trans' => $trans]);
     }
 }

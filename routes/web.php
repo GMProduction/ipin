@@ -19,15 +19,8 @@ Route::get('/', 'Main\MainController@index');
 Route::get('/private/{id}', 'Main\MainController@detailPrivate');
 Route::get('/open/{id}', 'Main\MainController@detailOpen');
 Route::post('/ajax/addToCart', 'Main\TransactionController@addToCart');
-
-Route::get('/detailpaket', function () {
-    return view('detailpaket');
-});
-
-Route::get('/detailartikel', function () {
-    return view('detailartikel');
-});
-
+Route::get('/payment/{id}', 'Main\TransactionController@pagePayment');
+Route::post('/payment/send', 'Main\TransactionController@send');
 Route::get('/gallery', function () {
     return view('gallery');
 });
@@ -40,13 +33,7 @@ Route::get('/kontak', function () {
     return view('kontak');
 });
 
-Route::get('/cart', function () {
-    return view('cart');
-});
 
-Route::get('/payment', function () {
-    return view('payment');
-});
 //ADMIN
 
 Route::get('/admin', function () {
@@ -132,23 +119,11 @@ Route::get('/pimpinan/user', function () {
 //USER
 
 
-Route::get('/user', function () {
-    return view('user.dashboard');
-});
-
-Route::get('/user/pesanan', function () {
-    return view('user.pesanan.pesanan');
-});
-
-Route::get('/user/detailpesanan', function () {
-    return view('user.pesanan.detailpesanan');
-});
-
-Route::get('/user/profil', function () {
-    return view('user.profil.profil');
-});
-
-
+Route::get('/user', 'Main\MainController@dashboard');
+Route::get('/user/pesanan', 'Main\TransactionController@pageTransaksi');
+Route::get('/user/pesanan/{id}', 'Main\TransactionController@detailHistory');
+Route::get('/user/profil', 'Main\MainController@profile');
+Route::post('/user/profil/update', 'Main\MainController@updateProfile');
 
 //LOGIN
 

@@ -91,10 +91,10 @@
                 if (res['status'] === 202) {
                     alert(res['payload']);
                 }
-                // if(redirect){
-                //     window.location.href = '/cart'
-                // }
-                // alert('Pesanan Berhasil Masuk Ke Keranjang')
+                if(res['status'] === 200){
+                    alert('Pemesanan Berhasil!')
+                    window.location.href = '/payment/' + res['payload'];
+                }
             } catch (e) {
                 alert('Terjadi Kesalahan\nPesanan Gagal Masuk Ke Keranjang\n' + e.message);
             }

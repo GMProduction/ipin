@@ -34,7 +34,7 @@ class AuthController extends CustomController
     public function login(Request $request)
     {
         $credentials = [
-            'email'    => $request['email'],
+            'username'    => $request['username'],
             'password' => $request['password'],
         ];
         if ($this->isAuth($credentials)) {

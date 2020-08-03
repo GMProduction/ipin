@@ -32,20 +32,17 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            {{--                    @foreach($produk as $p)--}}
                             <tr>
                                 <td class="text-center">1</td>
-                                <td class="text-center"><img src="{{asset('assets/img/slider/slider1.jpg')}}"
+                                <td class="text-center"><img src="{{ asset('/uploads/image') }}/{{ $transaction->product->url }}"
                                                              style="height: 100px; width: 100px; object-fit: cover"></td>
-                                <td class="text-center">Pantai Pasir Merah Muda</td>
-                                <th scope="col" class="sort text-center" data-sort="budget">Private Tour / paket Tour</th>
-                                <th scope="col" class="sort text-center" data-sort="budget">17 Agustus 2020</th>
-                                <td class="text-center"> 4 orang</td>
-                                <td class="text-center"> Rp 100.000</td>
-                                <td class="text-center"> Rp 400.000</td>
-
+                                <td class="text-center">{{ $transaction->product->nama }}</td>
+                                <th scope="col" class="sort text-center" data-sort="budget">{{ $transaction->product->tipe }}</th>
+                                <th scope="col" class="sort text-center" data-sort="budget">{{ $transaction->tgl_berangkat }}</th>
+                                <td class="text-center"> {{ $transaction->kuota }} orang</td>
+                                <td class="text-center"> Rp {{ number_format($transaction->harga, 0, ',', '.') }}</td>
+                                <td class="text-center"> Rp {{ number_format($transaction->harga * $transaction->kuota, 0, ',', '.') }}</td>
                             </tr>
-                            {{--                    @endforeach--}}
                             </tbody>
                         </table>
                     </div>
@@ -64,7 +61,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="total">Total Harga</label>
                                     <input type="text" id="total" name="total" readonly
-                                           class="form-control" value="">
+                                           class="form-control" value="Rp {{ number_format($transaction->harga * $transaction->kuota, 0, ',', '.') }}">
                                 </div>
                             </div>
                         </div>
@@ -84,8 +81,9 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST" enctype="multipart/form-data" action="/payment/send">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $transaction->id }}">
                             <h6 class="heading-small text-muted mb-4">Data</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
@@ -93,8 +91,9 @@
                                     <div class="form-group col-lg-12">
                                         <label for="bank">Bank</label>
                                         <select class="form-control" id="bank" name="bank">
-                                            <option value="bca">BCA</option>
-                                            <option value="bri">BRI</option>
+                                            @foreach($vendors as $v)
+                                                <option value="{{ $v->id }}">{{ $v->nama }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 

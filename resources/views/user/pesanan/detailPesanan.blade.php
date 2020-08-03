@@ -37,7 +37,7 @@
                                                             <th scope="col" class="sort text-center" data-sort="completion">gambar</th>
                                                             <th scope="col" class="sort text-center" data-sort="budget">Nama Tour</th>
                                                             <th scope="col" class="sort text-center" data-sort="budget">Jenis Tour</th>
-                                                            <th scope="col" class="sort text-center" data-sort="budget">Tanggal</th>
+                                                            <th scope="col" class="sort text-center" data-sort="budget">Tanggal Berangkat</th>
                                                             <th scope="col" class="sort text-center" data-sort="budget">Quota</th>
                                                             <th scope="col" class="sort text-center" data-sort="completion">Harga /orang</th>
                                                             <th scope="col" class="sort text-center" data-sort="completion">Total</th>
@@ -47,14 +47,14 @@
                                                         {{--                    @foreach($produk as $p)--}}
                                                         <tr>
                                                             <td class="text-center">1</td>
-                                                            <td class="text-center"><img src="{{asset('assets/img/slider/slider1.jpg')}}"
+                                                            <td class="text-center"><img src="{{asset('/images/uploads')}} / {{ $trans->product->url }}"
                                                                                          style="height: 100px; width: 100px; object-fit: cover"></td>
-                                                            <td class="text-center">Pantai Pasir Merah Muda</td>
-                                                            <th scope="col" class="sort text-center" data-sort="budget">Private Tour / paket Tour</th>
-                                                            <th scope="col" class="sort text-center" data-sort="budget">17 Agustus 2020</th>
-                                                            <td class="text-center"> 4 orang</td>
-                                                            <td class="text-center"> Rp 100.000</td>
-                                                            <td class="text-center"> Rp 400.000</td>
+                                                            <td class="text-center">{{ $trans->product->nama }}</td>
+                                                            <th scope="col" class="sort text-center" data-sort="budget">{{ $trans->product->tipe }} / tour</th>
+                                                            <th scope="col" class="sort text-center" data-sort="budget">{{ $trans->tgl_berangkat }}</th>
+                                                            <td class="text-center"> {{ $trans->kuota }} orang</td>
+                                                            <td class="text-center"> Rp {{ number_format($trans->harga, 0, ',', '.')}}</td>
+                                                            <td class="text-center"> Rp {{ number_format($trans->harga * $trans->kuota , 0, ',', '.')}}</td>
 
                                                         </tr>
                                                         </tbody>
@@ -79,15 +79,37 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="tanggalPinjam">Tanggal Pesan</label>
                                                 <input type="text" id="tanggalPinjam" name="tanggalPinjam" readonly
-                                                       class="form-control" value="">
+                                                       class="form-control" value="{{ $trans->created_at }}">
                                             </div>
                                         </div>
 
+                                        @php
+                                            $status = "Menunggu Konfirmasi"
+                                        @endphp
+                                        @switch($trans->status)
+                                            @case('0')
+                                            @php
+                                                $status = "Menunggu Konfirmasi"
+                                            @endphp
+                                            @break
+                                            @case('1')
+                                            @php
+                                                $status = "Di Terima"
+                                            @endphp
+                                            @break
+                                            @case('2')
+                                            @php
+                                                $status = "Di Tolak"
+                                            @endphp
+                                            @break
+                                            @default
+                                            @break
+                                        @endswitch
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="status">Status</label>
                                                 <input type="text" id="status" name="status" readonly
-                                                       class="form-control" value="">
+                                                       class="form-control" value="{{ $status }}">
                                             </div>
                                         </div>
 
@@ -95,7 +117,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="total">Total Harga</label>
                                                 <input type="text" id="total" name="total" readonly
-                                                       class="form-control" value="">
+                                                       class="form-control" value="Rp {{ number_format($trans->harga * $trans->kuota , 0, ',', '.')}}">
                                             </div>
                                         </div>
 
@@ -103,7 +125,6 @@
                                         <hr class="my-4"/>
                                         <!-- Description -->
                                         <div class="col-12 text-right">
-                                            <a type="submit" href="https://wa.me/62897123341?text=Saya%20ingin%20dengan%20menanyakan%20pesanan" class="btn btn-lg btn-primary">Upload Pembayaran</a>
                                             <a type="submit" href="https://wa.me/62897123341?text=Saya%20ingin%20dengan%20menanyakan%20pesanan" class="btn btn-lg btn-success">Contact Admin</a>
                                         </div>
                                     </div>

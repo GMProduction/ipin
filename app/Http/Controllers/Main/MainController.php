@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Products;
 use App\Models\Transaction;
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class MainController extends CustomController
@@ -43,9 +44,14 @@ class MainController extends CustomController
     public function detailOpen($id)
     {
         $product = Products::where('tipe', '=', 'open')->where('id', '=', $id)->firstOrFail();
+        $tgl_berangkat = $product->tgl_berangkat;
+        $trans = Transaction::with('product')->whereHas('product', function (Builder $query) use ($id){
+            $query->where('id', '=', $id);
+        })->where('tgl_berangkat', '=', $tgl_berangkat)->get();
+        $kuota = $trans->sum('kuota');
         $products = Products::where('tipe', '=', 'open')->get();
         $products->take(4);
-        return view('detailpaket')->with(['product' => $product, 'products' => $products->take(4)]);
+        return view('detailpaket')->with(['product' => $product, 'products' => $products->take(4), 'kuota' => $kuota]);
     }
 
     public function dashboard()

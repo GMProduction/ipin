@@ -44,7 +44,7 @@
                 <a class="nav-item nav-link text-sm ml-3" href="/kontak">Kontak Kami</a>
 
                 @auth()
-                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-success" style="font-weight: bold" href="/">Dashboard</a>
+                <a class="nav-item nav-link text-sm ml-7 btn btn-outline-success" style="font-weight: bold" href="/user">Dashboard</a>
                 <a class="nav-item nav-link text-sm text-success ml-3" href="/logout">logout</a>
                 @endauth
                 @guest()
