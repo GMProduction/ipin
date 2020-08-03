@@ -16,12 +16,24 @@
     <link rel="stylesheet" href="{{ asset('/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}.." type="text/css">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('/assets/css/argon.css?v=1.2.0') }}" type="text/css">
+    <script src="{{asset('assets/js/swal.min.js')}}"></script>
+
 </head>
 
 <body class="bg-default">
 <!-- Navbar -->
 <!-- Main content -->
 <div class="main-content">
+    @if(\Illuminate\Support\Facades\Session::has('failed'))
+        <script>
+            Swal.fire({
+                title: 'Warning',
+                text: 'Login salah ',
+                icon: 'warning',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+@endif
     <!-- Header -->
     <div class="header bg-gradient-primary py-8 py-lg-8 pt-lg-8">
         <div class="container">
@@ -48,13 +60,14 @@
                         <div class="text-center text-muted mb-4">
                             <small>Masukan user dan password</small>
                         </div>
-                        <form role="form">
+                        <form role="form" method="post" action="/post-login">
+                            @csrf
                             <div class="form-group mb-3">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Email" type="email">
+                                    <input class="form-control" required placeholder="Email" type="email" name="email">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -62,12 +75,12 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password">
+                                    <input class="form-control" required placeholder="Password" type="password" name="password">
                                 </div>
                             </div>
 
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary my-4" style="width: 100%">Login</button>
+                                <button type="submit" class="btn btn-primary my-4" style="width: 100%">Login</button>
                                 <a href="/daftaruser" class="btn btn-danger my-1" style="width: 100%">Daftar User</a>
                             </div>
                         </form>

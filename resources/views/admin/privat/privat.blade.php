@@ -26,7 +26,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="/admin/tambahprivat" class="btn btn-md btn-neutral">Tambah Data</a>
+                        <a href="/admin/privat/tambahprivat" class="btn btn-md btn-neutral">Tambah Data</a>
                     </div>
                 </div>
             </div>
@@ -60,33 +60,32 @@
                             </tr>
                             </thead>
                             <tbody class="list">
-                            {{--                            @foreach($produk as $p)--}}
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">Private Keraton Solo</td>
-                                <td class="text-center">Solo</td>
-                                <td class="text-center">Keraton Solo</td>
-                                <td class="text-center">4 Orang</td>
-                                <td class="text-center">8 Orang</td>
-                                <td class="text-center">Rp 100.000 / orang</td>
-                                <td class="text-center">1 hari</td>
-                                <td class="text-center">Mobil Terios, Makan 3x, Tour Guide </td>
-                                <td class="text-center">
-                                    <img src="{{asset('assets/img/theme/angular.jpg')}}" href="{{asset('assets/img/theme/angular.jpg')}}" height="50"></td>
-                                <td class="text-right">
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm btn-icon-only btn-primary text-light" href="#" role="button"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="">Edit</a>
-                                            <a class="dropdown-item" href="#!">Delete</a>
+                            @foreach($produk as $p)
+                                <tr>
+                                    <td class="text-center">{{$loop->index+1}}</td>
+                                    <td class="text-center">{{$p->nama}}</td>
+                                    <td class="text-center">{{$p->kota}}</td>
+                                    <td class="text-center">{{$p->wisata}}</td>
+                                    <td class="text-center">{{$p->min_kuota}} Orang</td>
+                                    <td class="text-center">{{$p->max_kuota}} Orang</td>
+                                    <td class="text-center">Rp. {{number_format($p->harga,0,',','.')}} / orang</td>
+                                    <td class="text-center">{{$p->durasi}} hari</td>
+                                    <td class="text-center">{{$p->deskripsi}}</td>
+                                    <td class="text-center"><img src="{{asset('/uploads/image')}}/{{$p->url}}" height="50"></td>
+                                    <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only btn-primary text-light" href="#" role="button"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item" href="/admin/privat/editprivat/{{$p->id}}?aksi=privat">Edit</a>
+                                                <a class="dropdown-item" href="#!" onclick="hapus('{{$p->id}}','{{$p->nama}}')">Delete</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            {{--                            @endforeach--}}
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -107,7 +106,7 @@
 
         function hapus(id, name) {
             Swal.fire({
-                title: 'Apa anda yakin untuk menghapus Private Tour ?',
+                title: 'Apa anda yakin untuk menghapus Private Tour '+name+' ?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

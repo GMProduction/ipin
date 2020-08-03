@@ -20,7 +20,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="/admin/produk">Data Tour</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/paket">Data Tour</a></li>
                                 <li class="breadcrumb-item"><a href="#">Tambah Data</a></li>
                             </ol>
                         </nav>
@@ -38,16 +38,16 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST" action="/admin/produk/adddata" enctype="multipart/form-data">
                             @csrf
+                            <input id="tipe" name="tipe" value="open" hidden>
                             <h6 class="heading-small text-muted mb-4">Data</h6>
                             <div class="pl-lg-4">
                                 <div class="row">
-
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="tour">Nama Paket Tour</label>
-                                            <input type="text" required id="tour" name="tour"
+                                            <input type="text" required id="tour" name="nama"
                                                    class="form-control">
                                         </div>
                                     </div>
@@ -74,7 +74,15 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label for="jadwal" class="form-control-label">Jadwal</label>
-                                            <input class="form-control" type="date" value="2018-11-23" id="jadwal" name="jadwal">
+                                            <input class="form-control" type="date" value="2020-11-23" id="jadwal" name="tgl_berangkat">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="maxquota">Min. Quota</label>
+                                            <input type="number" required id="minquota" name="minquota"
+                                                   class="form-control">
                                         </div>
                                     </div>
 
@@ -97,7 +105,7 @@
                                     <div class="col-lg-2">
                                         <div class="form-group">
                                             <label for="waktu">Waktu /hari</label>
-                                            <input type="number" required id="waktu" name="waktu"
+                                            <input type="number" required id="waktu" name="durasi"
                                                    class="form-control">
                                         </div>
                                     </div>

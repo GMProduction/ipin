@@ -53,52 +53,47 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/admin/privat', function () {
-    return view('admin.privat.privat');
-});
+Route::get('/admin/privat', 'Admin\ProdukController@indexPrivat');
 
-Route::get('/admin/tambahprivat', function () {
+Route::get('/admin/privat/tambahprivat', function () {
     return view('admin.privat.tambahprivat');
 });
 
-Route::get('/admin/paket', function () {
-    return view('admin.paket.paket');
-});
+Route::get('/admin/privat/editprivat/{id}', 'Admin\ProdukController@editForm');
+Route::post('/admin/privat/editprivat/{id}', 'Admin\ProdukController@editForm');
 
-Route::get('/admin/tambahpaket', function () {
+Route::get('/admin/paket', 'Admin\ProdukController@indexOpen');
+
+Route::post('/admin/produk/adddata', 'Admin\ProdukController@addForm');
+
+Route::get('/admin/paket/tambahpaket', function () {
     return view('admin.paket.tambahpaket');
 });
+Route::get('/admin/paket/editpaket/{id}', 'Admin\ProdukController@editForm');
+Route::post('/admin/paket/editpaket/{id}', 'Admin\ProdukController@editForm');
+Route::post('/admin/produk/hapus/{id}', 'Admin\ProdukController@hapus');
 
-Route::get('/admin/gallery', function () {
-    return view('admin.gallery.gallery');
-});
+Route::get('/admin/gallery', 'Admin\GalleryController@index');
 
-Route::get('/admin/tambahgallery', function () {
-    return view('admin.gallery.tambahgallery');
-});
+Route::get('/admin/gallery/tambahgallery', 'Admin\GalleryController@addForm');
+Route::post('/admin/gallery/tambahgallery', 'Admin\GalleryController@addForm');
+Route::get('/admin/gallery/editgallery/{id}', 'Admin\GalleryController@editForm');
+Route::post('/admin/gallery/editgallery/{id}', 'Admin\GalleryController@editForm');
+Route::post('/admin/gallery/hapus/{id}', 'Admin\GalleryController@hapus');
 
-Route::get('/admin/artikel', function () {
-    return view('admin.artikel.artikel');
-});
-
-Route::get('/admin/tambahartikel', function () {
-    return view('admin.artikel.tambahartikel');
-});
-
+Route::get('/admin/artikel', 'Admin\ArtikelController@index');
+Route::get('/admin/artikel/tambahartikel', 'Admin\ArtikelController@addForm');
+Route::post('/admin/artikel/tambahartikel', 'Admin\ArtikelController@addForm');
+Route::get('/admin/artikel/editartikel/{id}', 'Admin\ArtikelController@editForm');
+Route::post('/admin/artikel/editartikel/{id}', 'Admin\ArtikelController@editForm');
+Route::post('/admin/artikel/hapus/{id}', 'Admin\ArtikelController@hapus');
 
 
+Route::get('/admin/pesanan', 'Admin\TransaksiController@index');
+Route::get('/admin/pesanan/detailpesanan/{id}', 'Admin\TransaksiController@detail');
+Route::post('/admin/pesanan/detailpesanan/{id}', 'Admin\TransaksiController@detail');
 
-Route::get('/admin/pesanan', function () {
-    return view('admin.pesanan.pesanan');
-});
-
-Route::get('/admin/detailpesanan', function () {
-    return view('admin.pesanan.detailPesanan');
-});
-
-Route::get('/admin/user', function () {
-    return view('admin.user.user');
-});
+Route::get('/admin/user', 'Admin\UserController@index');
 
 //PIMPINAN
 Route::get('/pimpinan', function () {
@@ -172,3 +167,7 @@ Route::get('/logout', 'Auth\AuthController@logout');
 
 
 Route::get('/admin/pesanan/cetak', 'LaporanController@cetakAdminDatapesanan')->name('cetakAdminDatapesanan');
+
+Route::post('/post-register', 'Auth\AuthController@register');
+Route::post('/post-login', 'Auth\AuthController@login');
+Route::get('/logout', 'Auth\AuthController@logout');
