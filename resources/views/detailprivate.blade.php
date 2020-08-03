@@ -5,16 +5,16 @@
     <section class="container mt-5 mb-5 card p-3">
         <div class="row ">
             <div class="col-7">
-                <img src="{{asset('assets/img/slider/slider1.jpg')}}" style="width: 100%; height: 300px; object-fit: cover">
+                <img src="{{asset('/uploads/image')}} / {{ $product->url }}" style="width: 100%; height: 300px; object-fit: cover">
             </div>
 
             <div class="col-5">
-                <p style="font-size: 30px; font-weight: bold" class="mb-3 text-success">Pantai Pasir Merah Muda</p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Min Quota: 4 Orang </p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0">Max Quota: 8 Orang </p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Waktu: 2 Hari </p>
-                <p style="font-size: 14px; font-weight: bold" class="text-black-50" >Fasilitas: Minibus, Makan 6x (1 hari 3x), Free Tour Guide </p>
-                <a style="font-size: 20px; font-weight: bold" class="text-success">Rp. 100.000 /Orang</a>
+                <p style="font-size: 30px; font-weight: bold" class="mb-3 text-success">{{ $product->nama }}</p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Min Quota: {{ $product->min_kuota }} Orang </p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0">Max Quota: {{ $product->max_kuota }} Orang </p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50 mb-0" >Waktu: {{ $product->durasi }} Hari </p>
+                <p style="font-size: 14px; font-weight: bold" class="text-black-50" >{{ $product->deskripsi }} </p>
+                <a style="font-size: 20px; font-weight: bold" class="text-success">Rp. {{ number_format($product->harga, 0, ',', '.') }} /Orang</a>
 
 
 
@@ -32,7 +32,7 @@
                 </div>
 
 
-                <button type="button" class="btn btn-primary mt-0" >Pesan Sekarang</button>
+                <button type="button" onclick="addToCart()" class="btn btn-primary mt-0" >Pesan Sekarang</button>
 
             </div>
         </div>
@@ -71,6 +71,28 @@
 @section('script')
 
     <script>
+        async function addToCart() {
+            let data = {
+                '_token': "{{ csrf_token() }}",
+                id: '{{ $product->id }}',
+                harga: '{{ $product->harga}}',
+                qty: $('#qty').val(),
+                tgl: $('#tanggal').val(),
+                tipe: 'private',
+            };
+            try {
+                let res = await $.post('/ajax/addToCart', data);
+                if(res['status'] === 202){
+                    alert(res['payload']);
+                }
+                // if(redirect){
+                //     window.location.href = '/cart'
+                // }
+                // alert('Pesanan Berhasil Masuk Ke Keranjang')
+            } catch (e) {
+                alert('Terjadi Kesalahan\nPesanan Gagal Masuk Ke Keranjang\n' + e.message);
+            }
+        }
         $(document).ready(function() {
             const minus = $('.quantity__minus');
             const plus = $('.quantity__plus');

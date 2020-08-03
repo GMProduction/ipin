@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Main;
 use App\Helper\CustomController;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Models\Products;
 use App\Models\Produk;
 use App\Models\Transaction;
 use App\Models\Vendor;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class TransactionController extends CustomController
 {
@@ -40,19 +42,30 @@ class TransactionController extends CustomController
     {
 
         try {
-            $tgl1 = DateTime::createFromFormat('m/d/Y', $this->postField('sewa'));
-            $tgl2 = DateTime::createFromFormat('m/d/Y', $this->postField('kembali'));
-            $sewa = $tgl1->format('Y-m-d');
-            $kembali = $tgl2->format('Y-m-d');
+            $product = Products::findOrFail($this->postField('id'));
+            $min = $product->min_kuota;
+            $max = $product->max_kuota;
+            $kuota = $this->postField('qty');
+            if ($kuota < $min) {
+                return $this->jsonResponse('Kuota Minimal Kurang!', 202);
+            }
+            if ($kuota > $max) {
+                return $this->jsonResponse('Kuota Melebihi Maksimal!', 202);
+            }
             $data = [
                 'user_id' => auth()->id(),
-                'tgl_mulai' => $sewa,
-                'status' => 'Belum di konfirmasi',
-                'tgl_akhir' => $kembali,
+                'status' => '0',
+                'no_transaksi' => 'TR-' . date('YmdHis'),
                 'harga' => $this->postField('harga'),
+                'kuota' => $kuota,
                 'product_id' => $this->postField('id')
             ];
+            $tgl = $product->tgl_berangkat;
+            if ($this->postField('tipe') === 'private'){
+                $tgl = $this->postField('tgl');
+            }
 
+            $data = Arr::add($data, 'tgl_berangkat', $tgl);
             $transaction = $this->insert(Transaction::class, $data);
             return $this->jsonResponse($transaction->id, 200);
         } catch (\Exception $e) {

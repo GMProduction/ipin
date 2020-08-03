@@ -18,6 +18,7 @@ Route::get('/', 'Main\MainController@index');
 
 Route::get('/private/{id}', 'Main\MainController@detailPrivate');
 Route::get('/open/{id}', 'Main\MainController@detailOpen');
+Route::post('/ajax/addToCart', 'Main\TransactionController@addToCart');
 
 Route::get('/detailpaket', function () {
     return view('detailpaket');
@@ -163,7 +164,9 @@ Route::get('/login', function () {
 Route::get('/daftaruser', function () {
     return view('login.daftaruser');
 });
-
+Route::post('/post-register', 'Auth\AuthController@register');
+Route::post('/post-login', 'Auth\AuthController@login');
+Route::get('/logout', 'Auth\AuthController@logout');
 
 //CETAK
 
